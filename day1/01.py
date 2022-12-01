@@ -1,19 +1,14 @@
-f = open('test.txt', 'r')
-calories = 0
-largest = 0
-num = 0
-while(True):
-    line = f.readline()
-    if line == "":
-        break
+f = open("input.txt", 'r')
+arr_calories = f.readlines()
+
+elf = []
+arr_total_cal = []
+for line in arr_calories:
     if line == "\n":
-        num += 1
-        if num == 3:
-            print ("calories = " + str(calories))
-            if calories > largest:
-                largest = calories
-            calories = 0
-            continue
-    calories += int(line)
-# print(largest)
-f.close()
+        arr_total_cal.append(sum(elf))
+        elf.clear()
+        continue
+    elf.append(int(line[:-1]))
+arr_total_cal.sort(reverse=True)
+print(arr_total_cal[0])
+
