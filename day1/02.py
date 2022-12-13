@@ -1,5 +1,5 @@
 f = open("input.txt", 'r')
-content = f.readlines()
+calorie_list = f.readlines()
 
 total_elf = []
 total_cal_all = []

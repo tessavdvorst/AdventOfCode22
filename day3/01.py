@@ -1,14 +1,80 @@
-# store the input in a list without new line char
-# for every line, split in half and store in list
-#   check which char appears in both lists.
-#   convert the char to the priority score and add to sum
-# print (sum)
-
 import math
 
-with open("test.txt", 'r') as input:
+priority = {
+    'a': 1,
+    'b': 2,
+    'c': 3,
+    'd': 4,
+    'e': 5,
+    'f': 6,
+    'g': 7,
+    'h': 8,
+    'i': 9,
+    'j': 10,
+    'k': 11,
+    'l': 12,
+    'm': 13,
+    'n': 14,
+    'o': 15,
+    'p': 16,
+    'q': 17,
+    'r': 18,
+    's': 19,
+    't': 20,
+    'u': 21,
+    'v': 22,
+    'w': 23,
+    'x': 24,
+    'y': 25,
+    'z': 26,
+    'A': 27,
+    'B': 28,
+    'C': 29,
+    'D': 30,
+    'E': 31,
+    'F': 32,
+    'G': 33,
+    'H': 34,
+    'I': 35,
+    'J': 36,
+    'K': 37,
+    'L': 38,
+    'M': 39,
+    'N': 40,
+    'O': 41,
+    'P': 42,
+    'Q': 43,
+    'R': 44,
+    'S': 45,
+    'T': 46,
+    'U': 47,
+    'V': 48,
+    'W': 49,
+    'X': 50,
+    'Y': 51,
+    'Z': 52,
+}
+
+with open("input.txt", 'r') as input:
     list_of_rucksacks = [x.strip('\n') for x in input]
-for rucksack in list_of_rucksacks:
-    middle_index = math.floor(len(rucksack) / 2)
-    rucksack.slice(:middle_index)
-print(list_of_rucksacks)
+
+all_split_rucksack = []
+for line in list_of_rucksacks:
+    rucksack = []
+    middle_index = math.floor(len(line)/2)
+    rucksack.append(line[:middle_index]) 
+    rucksack.append(line[middle_index:])
+    all_split_rucksack.append(rucksack) 
+
+same_items = []
+for rucksack in all_split_rucksack:
+    for i in range(0, len(rucksack[0])):
+        res = rucksack[1].find(rucksack[0][i])
+        if res >= 0:
+            same_items.append(rucksack[1][res])
+            break
+
+sum_of_priorities = 0
+for item in same_items:
+    sum_of_priorities += priority.get(item)
+print(sum_of_priorities)
