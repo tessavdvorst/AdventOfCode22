@@ -3,7 +3,7 @@ calorie_list = f.readlines()
 
 total_elf = []
 total_cal_all = []
-for line in content:
+for line in calorie_list:
     if line == "\n":
         total_cal_all.append(sum(total_elf))
         total_elf.clear()

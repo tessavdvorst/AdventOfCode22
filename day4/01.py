@@ -1,6 +1,17 @@
-with open("test.txt", 'r') as input:
-    list_of_pairs = [x.strip('\n').split(',') for x in input]
-print(list_of_pairs)
+with open("input.txt", 'r') as input:
+    list_of_pairs = [x.strip('\n') for x in input]
 
+count = 0
 for pair in list_of_pairs:
-    
+    elf_one, elf_two = pair.split(',')
+    elf_one = [int(i) for i in elf_one.split('-')]
+    elf_two = [int(i) for i in elf_two.split('-')]
+    if elf_one[0] >= elf_two[0] and \
+    elf_one[1] <= elf_two[1]:
+        count += 1
+    elif elf_two[0] >= elf_one[0] and \
+    elf_two[1] <= elf_one[1]:
+        count += 1
+print("Answer part 1: ", count)
+
+
